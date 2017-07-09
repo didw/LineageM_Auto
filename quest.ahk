@@ -2,8 +2,8 @@
 SetTitleMatchMode, 2
 WinFocus()
 {		
-    WinActivate, [MOMO]
-    WinWaitActive, [MOMO]
+    WinActivate, LineageM
+    WinWaitActive, LineageM
 }
 
 StopApp()
@@ -25,6 +25,12 @@ MClick(x,y)
 Loop,
 {
 	WinFocus()
+	Sleep, 1000
+	MClick(75,215) 
+	Sleep, 500
+	MClick(580,480)
+	Sleep, 1000
+	MClick(725,425)
 	Sleep, 2000
 	Loop,
 	{
@@ -79,6 +85,17 @@ Loop,
 				WinFocus()
 				MClick(900,500)
 			}
+		}
+		StopApp()
+	}
+	Loop, 20
+	{
+		Sleep, 500
+		ImageSearch, FoundX, FoundY, 165, 50, 175, 60, *150 hp_red_165.png
+		if ErrorLevel > 0
+		{
+			WinFocus()
+			MClick(770,500)
 		}
 		StopApp()
 	}
