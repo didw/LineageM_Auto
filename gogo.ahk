@@ -32,13 +32,20 @@ Loop,
 		StopApp()
 		Sleep, 500
 		WinFocus()
+		ImageSearch, FoundX, FoundY, 755, 485, 815, 540, *80 hp_empty.png
+		if ErrorLevel = 0
+		{
+			WinFocus()
+			MClick(900,500)
+			ExitApp
+		}
 		ImageSearch, FoundX, FoundY, 85, 50, 95, 60, *80 hp_green_85.png
 		if ErrorLevel = 0
 		{
 			WinFocus()
 			MClick(840,500)
 		}
-		ImageSearch, FoundX, FoundY, 165, 50, 175, 60, *150 hp_red_165.png
+		ImageSearch, FoundX, FoundY, 165, 50, 175, 60, *100 hp_red_165.png
 		if ErrorLevel > 0
 		{
 			WinFocus()
@@ -56,7 +63,7 @@ Loop,
 					WinFocus()
 					MClick(840,500)
 				}
-				ImageSearch, FoundX, FoundY, 165, 50, 175, 60, *150 hp_red_165.png
+				ImageSearch, FoundX, FoundY, 165, 50, 175, 60, *100 hp_red_165.png
 				if ErrorLevel > 0
 				{
 					WinFocus()
