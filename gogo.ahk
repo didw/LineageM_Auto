@@ -76,6 +76,7 @@ Loop,
 			backhome = 1
 			Loop, 2
 			{
+				Sleep, 500
 				ImageSearch, FoundX, FoundY, 85, 50, 95, 60, *150 hp_red_90.png
 				if ErrorLevel = 0
 				{
