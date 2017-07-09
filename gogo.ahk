@@ -17,9 +17,9 @@ StopApp()
 MClick(x,y)
 {
 	MouseMove, x, y
-	Sleep, 200
+	Sleep, 100
 	MouseClick, left, x, y
-	Sleep, 500
+	Sleep, 100
 }
 
 back_home = 0
