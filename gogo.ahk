@@ -2,8 +2,8 @@
 SetTitleMatchMode, 2
 WinFocus()
 {		
-    WinActivate, [MOMO]
-    WinWaitActive, [MOMO]
+    WinActivate, lineageM01
+    WinWaitActive, lineageM01
 }
 
 StopApp()
@@ -22,6 +22,7 @@ MClick(x,y)
 	Sleep, 500
 }
 
+back_home = 0
 Loop,
 {
 	WinFocus()
@@ -31,7 +32,7 @@ Loop,
 		StopApp()
 		Sleep, 500
 		WinFocus()
-		ImageSearch, FoundX, FoundY, 85, 50, 95, 60, *100 hp_green_85.png
+		ImageSearch, FoundX, FoundY, 85, 50, 95, 60, *80 hp_green_85.png
 		if ErrorLevel = 0
 		{
 			WinFocus()
@@ -48,7 +49,7 @@ Loop,
 		{
 			Loop, 5
 			{
-				ImageSearch, FoundX, FoundY, 85, 50, 95, 60, *100 hp_green_85.png
+				ImageSearch, FoundX, FoundY, 85, 50, 95, 60, *80 hp_green_85.png
 				if ErrorLevel = 0
 				{
 					WinFocus()
@@ -69,14 +70,27 @@ Loop,
 			MClick(273,122)
 		}
 
-		ImageSearch, FoundX, FoundY, 85, 50, 95, 60, *150 hp_red_90.png
-		if ErrorLevel > 0
+		if back_home = 0
 		{
-			ImageSearch, FoundX, FoundY, 85, 50, 95, 60, *100 hp_green_85.png
-			if ErrorLevel > 0
+			backhome = 1
+			Loop, 2
+			{
+				ImageSearch, FoundX, FoundY, 85, 50, 95, 60, *150 hp_red_90.png
+				if ErrorLevel = 0
+				{
+					backhome = 0
+				}
+				ImageSearch, FoundX, FoundY, 85, 50, 95, 60, *80 hp_green_85.png
+				if ErrorLevel = 0
+				{
+					backhome = 0
+				}
+			}
+			if backhome = 1
 			{
 				WinFocus()
 				MClick(900,500)
+				back_home = 1
 			}
 		}
 		StopApp()
