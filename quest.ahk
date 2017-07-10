@@ -2,8 +2,8 @@
 SetTitleMatchMode, 2
 WinFocus()
 {		
-    WinActivate, LineageM
-    WinWaitActive, LineageM
+    WinActivate, lineageM01
+    WinWaitActive, lineageM01
 }
 
 StopApp()
@@ -14,14 +14,23 @@ StopApp()
 	}
 } 
 
+BackHome()
+{
+	if GetKeyState("h")
+	{
+		MClick(900,500)
+	}
+} 
+
 MClick(x,y)
 {
 	MouseMove, x, y
-	Sleep, 200
+	Sleep, 100
 	MouseClick, left, x, y
-	Sleep, 500
+	Sleep, 100
 }
 
+back_home = 0
 Loop,
 {
 	WinFocus()
@@ -36,14 +45,22 @@ Loop,
 	{
 		StopApp()
 		Sleep, 500
+		BackHome()
 		WinFocus()
-		ImageSearch, FoundX, FoundY, 85, 50, 95, 60, *100 hp_green_85.png
+		ImageSearch, FoundX, FoundY, 755, 485, 815, 540, *80 hp_empty.png
+		if ErrorLevel = 0
+		{
+			WinFocus()
+			MClick(900,500)
+			ExitApp
+		}
+		ImageSearch, FoundX, FoundY, 85, 50, 95, 60, *80 hp_green_85.png
 		if ErrorLevel = 0
 		{
 			WinFocus()
 			MClick(840,500)
 		}
-		ImageSearch, FoundX, FoundY, 165, 50, 175, 60, *150 hp_red_165.png
+		ImageSearch, FoundX, FoundY, 165, 50, 175, 60, *100 hp_red_165.png
 		if ErrorLevel > 0
 		{
 			WinFocus()
@@ -55,13 +72,14 @@ Loop,
 			Loop, 5
 			{
 				Sleep, 200
-				ImageSearch, FoundX, FoundY, 85, 50, 95, 60, *100 hp_green_85.png
+				BackHome()
+				ImageSearch, FoundX, FoundY, 85, 50, 95, 60, *80 hp_green_85.png
 				if ErrorLevel = 0
 				{
 					WinFocus()
 					MClick(840,500)
 				}
-				ImageSearch, FoundX, FoundY, 165, 50, 175, 60, *150 hp_red_165.png
+				ImageSearch, FoundX, FoundY, 165, 50, 175, 60, *100 hp_red_165.png
 				if ErrorLevel > 0
 				{
 					WinFocus()
@@ -75,16 +93,26 @@ Loop,
 			MClick(250,250)
 			MClick(273,122)
 		}
-
-		ImageSearch, FoundX, FoundY, 85, 50, 95, 60, *150 hp_red_90.png
-		if ErrorLevel > 0
+		backhome = 1
+		Loop, 2
 		{
-			ImageSearch, FoundX, FoundY, 85, 50, 95, 60, *100 hp_green_85.png
-			if ErrorLevel > 0
+			Sleep, 500
+			ImageSearch, FoundX, FoundY, 85, 50, 95, 60, *150 hp_red_90.png
+			if ErrorLevel = 0
 			{
-				WinFocus()
-				MClick(900,500)
+				backhome = 0
 			}
+			ImageSearch, FoundX, FoundY, 85, 50, 95, 60, *80 hp_green_85.png
+			if ErrorLevel = 0
+			{
+				backhome = 0
+			}
+		}
+		if backhome = 1
+		{
+			WinFocus()
+			MClick(900,500)
+			back_home = 1
 		}
 		StopApp()
 	}

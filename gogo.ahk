@@ -14,6 +14,14 @@ StopApp()
 	}
 } 
 
+BackHome()
+{
+	if GetKeyState("h")
+	{
+		MClick(900,500)
+	}
+} 
+
 MClick(x,y)
 {
 	MouseMove, x, y
@@ -31,6 +39,7 @@ Loop,
 	{
 		StopApp()
 		Sleep, 500
+		BackHome()
 		WinFocus()
 		ImageSearch, FoundX, FoundY, 755, 485, 815, 540, *80 hp_empty.png
 		if ErrorLevel = 0
@@ -57,6 +66,7 @@ Loop,
 			Loop, 5
 			{
 				Sleep, 200
+				BackHome()
 				ImageSearch, FoundX, FoundY, 85, 50, 95, 60, *80 hp_green_85.png
 				if ErrorLevel = 0
 				{
