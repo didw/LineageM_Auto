@@ -30,7 +30,6 @@ MClick(x,y)
 	Sleep, 100
 }
 
-back_home = 0
 Loop,
 {
 	WinFocus()
@@ -71,7 +70,34 @@ Loop,
 		{
 			Loop, 5
 			{
-				Sleep, 200
+				Sleep, 100
+				BackHome()
+				ImageSearch, FoundX, FoundY, 85, 50, 95, 60, *80 hp_green_85.png
+				if ErrorLevel = 0
+				{
+					WinFocus()
+					MClick(840,500)
+				}
+				ImageSearch, FoundX, FoundY, 165, 50, 175, 60, *120 hp_red_165.png
+				if ErrorLevel > 0
+				{
+					WinFocus()
+					MClick(770,500)
+				}
+			}
+			WinFocus()
+			MClick(130,60)
+			MClick(65,255)
+			MClick(235,510)
+			MClick(250,250)
+			MClick(273,122)
+		}
+		ImageSearch, FoundX, FoundY, 695, 485, 750, 540, *150 broken_sudan.png
+		if ErrorLevel = 0
+		{
+			Loop, 5
+			{
+				Sleep, 100
 				BackHome()
 				ImageSearch, FoundX, FoundY, 85, 50, 95, 60, *80 hp_green_85.png
 				if ErrorLevel = 0
@@ -94,9 +120,9 @@ Loop,
 			MClick(273,122)
 		}
 		backhome = 1
-		Loop, 2
+		Loop, 3
 		{
-			Sleep, 500
+			Sleep, 100
 			ImageSearch, FoundX, FoundY, 85, 50, 95, 60, *150 hp_red_90.png
 			if ErrorLevel = 0
 			{
@@ -112,13 +138,12 @@ Loop,
 		{
 			WinFocus()
 			MClick(900,500)
-			back_home = 1
 		}
 		StopApp()
 	}
-	Loop, 20
+	Loop, 10
 	{
-		Sleep, 500
+		Sleep, 200
 		ImageSearch, FoundX, FoundY, 165, 50, 175, 60, *150 hp_red_165.png
 		if ErrorLevel > 0
 		{

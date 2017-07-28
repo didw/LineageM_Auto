@@ -16,28 +16,21 @@ WinFocus(window)
 	}
 }
 
+
 StopApp()
 {
 	if GetKeyState("x")
 	{
 		ExitApp
 	}
-} 
-
-BackHome()
-{
-	if GetKeyState("h")
-	{
-		MClick(900,500)
-	}
-} 
+}
 
 MClick(x,y)
 {
 	MouseMove, x, y
-	Sleep, 100
+	Sleep, 200
 	MouseClick, left, x, y
-	Sleep, 100
+	Sleep, 200
 }
 
 back_home = 0
@@ -48,28 +41,25 @@ Loop,
 	Loop,
 	{
 		StopApp()
-		Sleep, 500
+		MClick(695,445)
+		Sleep, 5000
 		WinFocus(g_window)
-		ImageSearch, FoundX, FoundY, 630, 315, 685, 370, *150 pk_detect.png
+		ImageSearch, FoundX, FoundY, 577, 188, 588, 200, *100 less_100.png
 		if ErrorLevel = 0
 		{
 			WinFocus(g_window)
-			MClick(720,375)
-			MClick(660,345)
-			Loop, 30
-			{
-				MClick(325,415)
-			}
-			MClick(580,345)
+			MClick(400,200)
+			MClick(710,400)
+			MClick(445,380)
 		}
-		StopApp()
 		if g_window = 1
 		{
-			g_window = 2 
+			g_window = 2
 		}
 		else
 		{
 			g_window = 1 
 		}
+		StopApp()
 	}
 }
