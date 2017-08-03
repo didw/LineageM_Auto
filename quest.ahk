@@ -53,6 +53,13 @@ Loop,
 			MClick(900,500)
 			ExitApp
 		}
+		ImageSearch, FoundX, FoundY, 755, 485, 815, 540, *150 red_hp_empty.png
+		if ErrorLevel = 0
+		{
+			WinFocus()
+			MClick(900,500)
+			ExitApp
+		}
 		ImageSearch, FoundX, FoundY, 85, 50, 95, 60, *80 hp_green_85.png
 		if ErrorLevel = 0
 		{
@@ -68,9 +75,12 @@ Loop,
 		ImageSearch, FoundX, FoundY, 695, 485, 750, 540, *150 broken_pade.png
 		if ErrorLevel = 0
 		{
-			Loop, 5
+			MClick(530,510)
+			Sleep, 200
+			MClick(590,510)
+			Loop, 10
 			{
-				Sleep, 100
+				Sleep, 300
 				BackHome()
 				ImageSearch, FoundX, FoundY, 85, 50, 95, 60, *80 hp_green_85.png
 				if ErrorLevel = 0
@@ -86,6 +96,7 @@ Loop,
 				}
 			}
 			WinFocus()
+			MClick(725,510)
 			MClick(130,60)
 			MClick(65,255)
 			MClick(235,510)
@@ -95,7 +106,7 @@ Loop,
 		ImageSearch, FoundX, FoundY, 695, 485, 750, 540, *150 broken_sudan.png
 		if ErrorLevel = 0
 		{
-			Loop, 5
+			Loop, 10
 			{
 				Sleep, 100
 				BackHome()
@@ -138,10 +149,11 @@ Loop,
 		{
 			WinFocus()
 			MClick(900,500)
+			break
 		}
 		StopApp()
 	}
-	Loop, 10
+	Loop, 20
 	{
 		Sleep, 200
 		ImageSearch, FoundX, FoundY, 165, 50, 175, 60, *150 hp_red_165.png
